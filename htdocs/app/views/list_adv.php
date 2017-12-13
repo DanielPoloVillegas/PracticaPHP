@@ -1,3 +1,12 @@
+<!--
+*** Autor: Daniel Polo Villegas ***
+*** Versión del programa: 1.0 ***
+*** Fecha de creación: 08/12/2017 ***
+
+*** Vista de lista de anuncios, cada anuncio puede ser borrado por su autor o por el administrador.
+    Se puede acceder a la página de cada anuncio haciendo click sobre "Más detalles" ***
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

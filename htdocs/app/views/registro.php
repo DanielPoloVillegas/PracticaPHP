@@ -1,3 +1,12 @@
+<!--
+*** Autor: Daniel Polo Villegas ***
+*** Versión del programa: 1.0 ***
+*** Fecha de creación: 08/12/2017 ***
+
+*** Formulario de registro de usuarios. Posee un control de datos básico, con campos requeridos
+    y expresiones regulares ***
+-->
+
 <!DOCTYPE html>
     <head> 
         <title>LoVendoTodo</title>

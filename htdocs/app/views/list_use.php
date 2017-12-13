@@ -1,3 +1,12 @@
+<!--
+*** Autor: Daniel Polo Villegas ***
+*** Versión del programa: 1.0 ***
+*** Fecha de creación: 08/12/2017 ***
+
+*** Vista de lista de usuarios, exclusiva para administradores. Se pueden eliminar usuarios desde ella o
+	visitar los perfiles de los usuarios haciendo click sobre sus fotos ***
+-->
+
 <!DOCTYPE html>
 <html>
 	<head>

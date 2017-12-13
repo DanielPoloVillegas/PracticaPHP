@@ -1,3 +1,11 @@
+<!--
+*** Autor: Daniel Polo Villegas ***
+*** Versión del programa: 1.0 ***
+*** Fecha de creación: 08/12/2017 ***
+*** USUARIOS : PASSWORD ***
+*** ADMIN : Administrador1 ***
+*** User1, User2, User3 : Chichita1 ***
+-->
 
 <?php
 session_start();

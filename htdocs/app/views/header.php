@@ -1,3 +1,12 @@
+<!--
+*** Autor: Daniel Polo Villegas ***
+*** Versión del programa: 1.0 ***
+*** Fecha de creación: 08/12/2017 ***
+
+*** Barra de navegación presente en toda nuestra aplicación, que incluye los enlaces al login/registro,
+lista de usuarios (para administradores), perfil, lista de anuncios y registro de anuncios ***
+-->
+
 <html>
     <head>
         <meta charset="utf-8">

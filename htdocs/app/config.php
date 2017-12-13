@@ -1,3 +1,9 @@
+<!--
+*** Autor: Daniel Polo Villegas ***
+*** Versión del programa: 1.0 ***
+*** Fecha de creación: 08/12/2017 ***
+-->
+
 <?php
  // Conexión a la base de datos usando PDO
  $dbHost = 'localhost';

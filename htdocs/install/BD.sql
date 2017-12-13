@@ -2,6 +2,10 @@
 -- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
+-- *** Autor: Daniel Polo Villegas ***
+-- *** Versión del programa: 1.0 ***
+-- *** Fecha de creación: 08/12/2017 ***
+
 -- Servidor: 127.0.0.1
 -- Tiempo de generación: 13-12-2017 a las 09:18:16
 -- Versión del servidor: 10.1.28-MariaDB
@@ -48,7 +52,7 @@ CREATE TABLE `anuncios` (
 INSERT INTO `anuncios` (`ID`, `Titulo`, `Precio_Prod`, `Precio_Venta`, `Tipo`, `Porcentaje`, `Categoria`, `Caracteristicas`, `Fecha_Reg`, `Usuario`) VALUES
 (1, 'Casa Barata', 10.00, 30.00, 'Nuevo', 200.00, 'Inmobiliaria', 'Barata Barata', '2017-12-13', 'User1'),
 (2, 'TelÃ©fono Seminuevo', 50.00, 67.72, 'Usado', 35.43, 'Telefonia', 'Ideal para jugar', '2017-12-13', 'User2'),
-(3, 'Motor Roto', 1.00, 1.00, 'Defectuoso', 0.01, 'Motor', 'No funciona. Urge vender', '2017-12-13', 'user3');
+(3, 'Motor Roto', 1.00, 1.00, 'Defectuoso', 0.01, 'Motor', 'No funciona. Urge vender', '2017-12-13', 'User3');
 
 --
 -- Disparadores `anuncios`
@@ -123,7 +127,7 @@ CREATE TABLE `usuarios` (
 INSERT INTO `usuarios` (`NIF`, `Nombre`, `Apellido1`, `Apellido2`, `Password`, `Nombre_Usuario`, `Direccion`, `Poblacion`, `CP`, `Provincia`, `Telefono_Fijo`, `Telefono_Movil`, `Correo`, `Web`, `Blog`, `Twitter`, `Fecha_Registro`) VALUES
 ('11111111X', 'A', 'A', 'A', '381da45a960b6d7493500412006adb4c', 'User1', 'C/ alle 1B', 'Hornachuelos', '23451', '14', '957000000', '600000000', 'User1@hotmail.com', 'www.user1.es', 'BlogBlog', '', '2017-12-13'),
 ('22222222X', 'B', 'B', 'B', '381da45a960b6d7493500412006adb4c', 'User2', 'C/ alle 1C', 'Hornachuelos', '23451', '14', '900000000', '670000000', 'User2@hotmail.com', 'www.user2.es', 'BlogBlog2', 'twitter.com/user2', '2017-12-13'),
-('33333333X', 'C', 'C', 'C', '381da45a960b6d7493500412006adb4c', 'user3', 'C/ alle 1D', 'Huelva', '21005', '21', '959000000', '695000000', 'User3@hotmail.com', 'www.user3.es', 'BlogBlog3', 'twitter.com/user3', '2017-12-13'),
+('33333333X', 'C', 'C', 'C', '381da45a960b6d7493500412006adb4c', 'User3', 'C/ alle 1D', 'Huelva', '21005', '21', '959000000', '695000000', 'User3@hotmail.com', 'www.user3.es', 'BlogBlog3', 'twitter.com/user3', '2017-12-13'),
 ('49061287X', 'Daniel', 'Polo', 'Villegas', 'bab8518a923c061567a34df0d583748a', 'ADMIN', 'C/ Falsa123', 'Huelva', '21005', '21', '959151610', '695273177', 'danipolov@gmail.com', 'www.lifo.es', 'Polarino', 'twitter.com/user1', '2017-12-13');
 
 --

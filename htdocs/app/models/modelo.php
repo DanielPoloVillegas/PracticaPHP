@@ -1,4 +1,10 @@
 <?php
+/*
+*** Autor: Daniel Polo Villegas ***
+*** Versión del programa: 1.0 ***
+*** Fecha de creación: 08/12/2017 ***
+*/
+
 /** Clase 'modelo' que implementa el modelo de nuestra aplicaci�n en una arquitectura MVC.
 * se encarga de gestionar el acceso a la base de datosen una capa especializada */
 class modelo {
@@ -31,7 +37,10 @@ class modelo {
 		}
 		return $return;
 	}
-	
+	/**Función que obtiene los datos de todos los anuncios para listarlos, o de uno en concreto
+	 * para mostrar toda su información. Se puede ampliar en un futuro para poder realizar búsquedas
+	 * con parámetros.
+	 */
 	public function datos_anuncios($ID) {
 		$return = [ "correcto" => FALSE,
 					"datos" => NULL,
@@ -64,7 +73,10 @@ class modelo {
 		}
 		return $return;
 	}
-
+	/**Función que obtiene los datos de todos los usuarios para listarlos, o de uno en concreto
+	 * para mostrar toda su información. Se puede ampliar en un futuro para poder realizar búsquedas
+	 * con parámetros.
+	 */
 	public function datos_usuarios($Usuario) {
 		$return = [ "correcto" => FALSE,
 					"datos" => NULL,
@@ -97,7 +109,8 @@ class modelo {
 		}
 		return $return;
 	}
-
+	/**Función para añadir usuario
+	 */
 	public function add_user($datos) {
 		try{
 			$sql = "INSERT INTO usuarios VALUES ('".$datos["NIF"]."', '".$datos["Nombre"]."', '".$datos["Apellido1"]."', 
@@ -116,7 +129,8 @@ class modelo {
 		}
 	return $return;
 	}
-
+	/**Función para añadir anuncio
+	 */
 	public function add_adv($datos) {
 		$datos["Precio_Venta"] = $datos["Precio_Prod"] + $datos['Precio_Prod'] * $datos['Porcentaje'] / 100;
 		try{
@@ -134,7 +148,8 @@ class modelo {
 		}
 	return $return;
 	}
-	
+	/**Función para modificar un usuario, actualmente sin usar
+	 */
 	public function mod_user($datos) {
 		try{
 			$sql = "UPDATE usuarios SET Nombre = '".$datos["Nombre"]."', Apellido1 = '".$datos["Apellido1"]."', 
@@ -153,7 +168,8 @@ class modelo {
 		}
 	return $return;
 	}
-
+	/**Función para modificar un anuncio, actualmente sin usar
+	 */
 	public function mod_adv($datos) {
 		$datos["Precio_Venta"] = $datos["Precio_Prod"] + $datos['Precio_Prod'] * $datos['Porcentaje'] / 100;
 		$datos["Usuario"] = "default";
@@ -173,7 +189,8 @@ class modelo {
 		}
 	return $return;
 	}
-
+	/**Función de borrado de usuario
+	 */
 	public function del_user($Usuario) {
 		try{
 			$sql = "DELETE FROM usuarios WHERE Nombre_Usuario = '$Usuario'";
@@ -188,7 +205,8 @@ class modelo {
 		}
 	return $return;
 	}
-
+	/**Función de borrado de anuncio
+	*/
 	public function del_adv($ID) {
 		try{
 			$sql = "DELETE FROM anuncios WHERE ID = '$ID'";
@@ -203,7 +221,10 @@ class modelo {
 		}
 	return $return;
 	}
-
+	/**Puesto que los accesos al programa no se pueden controlar con disparadores en las tablas de
+	 * la base de datos, esta función inserta una fila en la tabla log cada vez que un usuario accede
+	 * a la aplicación
+	 */
 	public function acceso_log() {
 		if ($_SESSION["user"] == "ADMIN") {
 			$perfil = 1;
