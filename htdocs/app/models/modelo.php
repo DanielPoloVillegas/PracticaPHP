@@ -13,6 +13,7 @@ class modelo {
 	public function __construct() {
 		$this->conectar();
 	}
+
 /**
 * M�todo que realiza la conexi�n a la base de datos de usuarios mediante PDO. Devuelve un
 * valor TRUE si la conexi�n se realiz� correctamente o el mensaje generado por la excepci�n si
@@ -100,7 +101,7 @@ class modelo {
 	public function add_user($datos) {
 		try{
 			$sql = "INSERT INTO usuarios VALUES ('".$datos["NIF"]."', '".$datos["Nombre"]."', '".$datos["Apellido1"]."', 
-			'".$datos["Apellido2"]."', '".$datos["Password"]."', '".$datos["Nombre_Usuario"]."', 
+			'".$datos["Apellido2"]."', '".md5($datos["Password"])."', '".$datos["Nombre_Usuario"]."', 
 			'".$datos["Direccion"]."', '".$datos["Poblacion"]."', '".$datos["CP"]."', '".$datos["Provincia"]."', 
 			'".$datos["Telefono_Fijo"]."', '".$datos["Telefono_Movil"]."', '".$datos["Correo"]."', '".$datos["Web"]."', 
 			'".$datos["Blog"]."', '".$datos["Twitter"]."', '". date("Y-m-d")."')";
@@ -118,7 +119,6 @@ class modelo {
 
 	public function add_adv($datos) {
 		$datos["Precio_Venta"] = $datos["Precio_Prod"] + $datos['Precio_Prod'] * $datos['Porcentaje'] / 100;
-		$datos["Usuario"] = "default";
 		try{
 			$sql = "INSERT INTO anuncios VALUES (NULL, '".$datos["Titulo"]."', '".$datos["Precio_Prod"]."', 
 			'".$datos["Precio_Venta"]."', '".$datos["Tipo"]."', '".$datos["Porcentaje"]."', 
@@ -192,6 +192,26 @@ class modelo {
 	public function del_adv($ID) {
 		try{
 			$sql = "DELETE FROM anuncios WHERE ID = '$ID'";
+			$resultsquery = $this->conexion->query($sql);
+			if ($resultsquery){
+				$return["correcto"] = TRUE;
+				$return["datos"] = "OK";
+			}
+		} 
+		catch(PDOException $ex) {
+			$return["error"] = $ex->getMessage();
+		}
+	return $return;
+	}
+
+	public function acceso_log() {
+		if ($_SESSION["user"] == "ADMIN") {
+			$perfil = 1;
+		}
+		else $perfil = 0;
+		try{
+			$sql = "INSERT INTO log VALUES (NULL, '".$_SESSION["user"]."', '".$perfil."', 
+			'".date("Y-m-d H:i:s")."', 'ACCESO')";
 			$resultsquery = $this->conexion->query($sql);
 			if ($resultsquery){
 				$return["correcto"] = TRUE;

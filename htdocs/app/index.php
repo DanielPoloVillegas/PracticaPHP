@@ -1,6 +1,10 @@
 
 <?php
-//include_once 'header.php'
+session_start();
+if (!isset($_SESSION["user"])) {
+	session_destroy();
+}
+include_once 'views/header.php';
 include_once 'controllers/controlador.php';
 include_once 'models/modelo.php';
 //Definimos un objeto controlador
@@ -15,5 +19,5 @@ if ($_GET && $_GET["accion"]){
 else {
 	$controlador -> accion('list_adv'); //redirección en caso de acción desconocida
 }
-//include_once 'footer.php'
+include_once 'views/footer.php'
 ?> 

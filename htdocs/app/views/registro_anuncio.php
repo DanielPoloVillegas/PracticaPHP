@@ -1,25 +1,75 @@
-<form id="registro_anuncio" action="../index.php?accion=adv_new" method="POST" enctype="multipart/form-data">
-    <h3>Titulo: </h3><input type="text" name="Titulo" maxlength="40" size="20" required/>
-    <h3>Precio mínimo del producto: </h3><input type="text" name="Precio_Prod" maxlength="10" size="10" required/>
-    <h3>Porcentaje de ganacia: </h3><input type="text" name="Porcentaje" maxlength="10" size="10" required/>
-    <h3>Tipo: </h3><select name="Tipo" form="registro_anuncio" required>
-        <option value="Nuevo">Nuevo</option>
-        <option value="Usado">Usado</option>
-        <option value="Defectuoso">Defectuoso</option>
-    </select>
-    <h3>Categoría: </h3><select name="Categoria" form="registro_anuncio" required>
-        <option value="Motor">Motor</option>
-        <option value="Informatica">Informática</option>
-        <option value="Telefonia">Telefonía</option>
-        <option value="Hogar">Hogar</option>
-        <option value="Inmobiliaria">Inmobiliaria</option>
-        <option value="Moda">Moda</option>
-        <option value="Juegos">Juegos</option>
-        <option value="Deporte">Deporte</option>
-    </select>
-    <h3>Características: </h3><textarea name="Caracteristicas" rows="4" required></textarea>
-    <h3>Imagen: </h3><input type="file" name="Imagen" accept=".jpg" max-size=32154 required/>
-    <!--input type="hidden" name="Usuario"/-->
-    <br>
-    <input type="submit" value="Enviar" name="Enviar" class="btn btn-success"/>
-</form>
+<head> 
+    <title>LoVendoTodo</title>
+    <link rel="stylesheet" href="../assets/css/registro.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+    <?php session_start();?>
+	    <div class="container">
+            <form class="form-horizontal" role="form" id="registro_anuncio" action="../index.php?accion=adv_new" method=POST enctype="multipart/form-data">
+                <h2>Registro de anuncio</h2>
+                <div class="form-group">
+                    <label for="Titulo" class="col-sm-3 control-label">Título</label>
+                    <div class="col-sm-9">
+                        <input class="form-control" type="text" name="Titulo" maxlength="40" placeholder="Titulo" size="20" required/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Precio_Prod" class="col-sm-3 control-label">Precio mínimo del producto</label>
+                    <div class="col-sm-9">
+                        <input class="form-control" type="text" name="Precio_Prod" maxlength="10" placeholder="Precio mínimo" size="10" required/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Porcentaje" class="col-sm-3 control-label">Porcentaje de ganancia</label>
+                    <div class="col-sm-9">
+                        <input class="form-control" type="text" name="Porcentaje" maxlength="10" placeholder="Porcentaje" size="10" required/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Tipo" class="col-sm-3 control-label">Tipo</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" name="Tipo" form="registro_anuncio" placeholder="Tipo" required>
+                            <option value="Nuevo">Nuevo</option>
+                            <option value="Usado">Usado</option>
+                            <option value="Defectuoso">Defectuoso</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Categoria" class="col-sm-3 control-label">Categoría</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" name="Categoria" form="registro_anuncio" placeholder="Categoría" required>
+                            <option value="Motor">Motor</option>
+                            <option value="Informatica">Informática</option>
+                            <option value="Telefonia">Telefonía</option>
+                            <option value="Hogar">Hogar</option>
+                            <option value="Inmobiliaria">Inmobiliaria</option>
+                            <option value="Moda">Moda</option>
+                            <option value="Juegos">Juegos</option>
+                            <option value="Deporte">Deporte</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Caracteristicas" class="col-sm-3 control-label">Características</label>
+                    <div class="col-sm-9">
+                        <textarea class="form-control" name="Caracteristicas" rows="4" required></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Imagen" class="col-sm-3 control-label">Imagen</label>
+                    <div class="col-sm-9">
+                        <input class="form-control" type="file" name="Imagen" accept=".jpg" max-size=32154 required/>
+                    </div>
+                </div>
+                <?php echo '<input class="form-control" type="hidden" name="Usuario" value="'.$_SESSION["user"].'"/>'?>
+                <div class="form-group">
+                    <div class="col-sm-9 col-sm-offset-3">
+                        <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+                    </div>
+                </div>
+            </form>
+        </div> 
+	</body>
+</html>

@@ -1,0 +1,14 @@
+i {  vertical-align: middle; }
+.table-users tbody tr:hover {
+	cursor: pointer;
+	background-color: #eee;
+}
+.panel-heading {
+    margin-top: 50px;
+}
+.nav-user-photo {
+     vertical-align: middle;
+}
+.user_panel {
+    width: 100%;
+}

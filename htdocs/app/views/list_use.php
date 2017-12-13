@@ -1,26 +1,54 @@
 <!DOCTYPE html>
-<table class="table-striped">
-	<tr>
-		<td>NIF</td>
-		<td>Nombre</td>
-		<td>Apellido 1</td>
-		<td>Apellido 2</td>
-		<td>Usuario</td>
-		<td>Foto</td>
-	</tr>
-<?php
-foreach ($rows["datos"] as $fila) {
-?>
-	<tr>
-		<td><?php echo $fila["NIF"]?></td>
-		<td><?php echo $fila["Nombre"]?></td>
-		<td><?php echo $fila["Apellido1"]?></td>
-		<td><?php echo $fila["Apellido2"]?></td>
-        <td><?php echo '<a href="index.php?accion=list_use&Nombre_Usuario=' . $fila["Nombre_Usuario"] . '">' . $fila["Nombre_Usuario"] . '</a>'?></td>
-		<td><?php echo '<img width="100" height="100" src="../../assets/img/use/' . $fila["NIF"] . '.jpg"/>'?></td>
-	</tr>
-<?php
-}
-?>
-
-</table>
+<html>
+	<head>
+		<title>LoVendoTodo</title>
+		<script src="https://use.fontawesome.com/1e803d693b.js"></script>
+		<link rel="stylesheet" href="../assets/css/list_use.css"></link>
+	</head>
+	
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="panel panel-default user_panel">
+					<div class="panel-heading">
+						<h3 class="panel-title">Lista de usuarios</h3>
+					</div>
+					<div class="panel-body">
+						<div class="table-container">
+							<table class="table-users table" border="0">
+								<tbody>
+								<?php
+									foreach ($rows["datos"] as $fila) {
+								?>
+									<tr>
+										<td width="10" align="center">
+											<?php echo '<a href="index.php?accion=list_use&Nombre_Usuario=' . $fila["Nombre_Usuario"] . '"><img class="pull-left img-circle nav-user-photo" width="50" src="../../assets/img/use/' . $fila["NIF"] . '.jpg"/></a>' ?>
+										</td>
+										<td>
+											<?php echo $fila["Nombre"] . " " . $fila["Apellido1"] . " " . $fila["Apellido2"]?>
+										</td>
+										<td>
+											<?php echo $fila["Nombre_Usuario"] ?>
+										</td>
+										<td align="center">
+											Registrado:  <?php echo $fila["Fecha_Registro"]?>
+										</td>
+										<td>
+											<?php
+											if ($_SESSION["user"] == "ADMIN"){
+                                                echo '<a href="index.php?accion=user_del&Nombre_Usuario='.$fila["Nombre_Usuario"].'"><input type="button" value="Borrar Usuario"/></a>';
+                                            }?>
+										</td>
+									</tr>
+								<?php
+									}
+								?>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

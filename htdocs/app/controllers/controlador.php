@@ -14,7 +14,7 @@ class controlador {
 		$this -> modelo = new modelo();
 		$this -> mensajes = [];
 	}
-	
+
 	public function accion($accion) {
 		switch ($accion) {
 			case 'list_adv':
@@ -39,25 +39,43 @@ class controlador {
 				break;
 			case 'user_new':
 				$return = $this -> modelo -> add_user($_POST);
-				var_dump($return);
+				session_start();
+				$_SESSION["user"] = $_POST["Nombre_Usuario"];
+				// TODO CARGA DE FOTOS
+				// move_uploaded_file($_FILES["Foto"]["tmp_name"], "../../assets/img/use" . $_POST["NIF"] .".jpg");
+				header("Location: index.php");
 				break;
 			case 'user_mod':
 				$return = $this -> modelo -> mod_user($_POST);
-				var_dump($return);
 				break;
 			case 'user_del':
-				$return = $this -> modelo -> del_user($_POST["Nombre_Usuario"]);
+				$return = $this -> modelo -> del_user($_GET["Nombre_Usuario"]);
+				header("Location: index.php");
 				break;
 			case 'adv_new':
 				$return = $this -> modelo -> add_adv($_POST);
-				var_dump($return);
+				// TODO CARGA DE FOTOS
+				header("Location: index.php");
 				break;
 			case 'adv_mod':
 				$return = $this -> modelo -> mod_adv($_POST);
-				var_dump($return);
 				break;
 			case 'adv_del':
-				$return = $this -> modelo -> del_adv($_POST["ID"]);
+				$return = $this -> modelo -> del_adv($_GET["ID"]);
+				header("Location: index.php");
+				break;
+			case 'login':
+				$return = $this -> modelo -> datos_usuarios($_POST['user']);
+				if($_POST['user'] == $return["datos"][0]['Nombre_Usuario'] && md5($_POST['pass']) == $return["datos"][0]['Password']){
+				session_start();
+				$_SESSION["user"] = $_POST['user'];
+				$return = $this -> modelo -> acceso_log();
+				}	
+				header("Location: index.php");
+				break;
+			case 'logout':
+				unset($_SESSION["user"]);
+				header("Location: index.php");
 				break;
 			default:
 				$rows = $this -> modelo -> datos_anuncios("all");
